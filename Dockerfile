@@ -13,5 +13,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Expose port 8080 for Cloud Run
 EXPOSE 8080
 
-# Command to run the API
-CMD ["python", "google_drive_api_server.py"]
+# Command to run the API with Gunicorn for production
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "google_drive_api_server:app"]
